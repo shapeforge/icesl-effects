@@ -62,7 +62,7 @@ vec3 grad(vec3 uvw)
   return vec3(ddu,ddv,ddw);
 }
 
-float volume(vec3 p) 
+float solid(vec3 p) 
 {
   float scale = 3.0;
   float maxex = max(extent.x,max(extent.y,extent.z));
