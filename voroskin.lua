@@ -11,9 +11,10 @@ if not vx then vx = {} end
 
 function effect(mdl)
   bx = bbox(mdl)
-  vskin = implicit_volume(bx:min_corner(), bx:max_corner(), 0.1, [[
+  vskin = implicit_solid(bx:min_corner(), bx:max_corner(), 0.05, [[
 uniform sampler3D object;
 uniform vec3 extent;
+uniform vec3 minc;
 
 float rand(ivec3 p)
 {
@@ -54,26 +55,25 @@ void voronoi(vec3 p)
 
 vec3 grad(vec3 uvw)
 {
-  const float delta = 0.01;
+  const float delta = 0.03;
   float v   = texture(object,uvw).x;
   float ddu = (texture(object,uvw + vec3(delta,0.0,0.0)).x - v) / delta;
   float ddv = (texture(object,uvw + vec3(0.0,delta,0.0)).x - v) / delta;
   float ddw = (texture(object,uvw + vec3(0.0,0.0,delta)).x - v) / delta;
-  return vec3(ddu,ddv,ddw);
+  return (vec3(ddu,ddv,ddw));
 }
 
-float volume(vec3 p) 
+float solid(vec3 p) 
 {
-  float scale = 3.0;
-  float maxex = max(extent.x,max(extent.y,extent.z));
-  vec3  q     = p*scale*extent/maxex;
+  float scale = 0.1;
+  vec3  q     = p*scale;
   
   closest_d = vec2(1e9);
 
-  float thickness = 0.05;
+  float thickness = 0.02;
   
-  float l = (texture(object,p*0.5+0.5).x - 0.5);
-  if (l < 0.0) {
+  float l = (texture(object,(p-minc)/extent).x - 0.5);
+  if (l < 0.0 && l > -0.2) {
     voronoi(q);
     // compute bisector
     vec3 bisec_nrm = normalize(closests_seeds[0] - closests_seeds[1]);
@@ -83,13 +83,13 @@ float volume(vec3 p)
     // distance to surface
     float d = (- l)*thickness*scale;
     // normal to surface
-    vec3 nrm_surface = normalize(grad(p*0.5+0.5));
+    vec3 nrm_surface = normalize(grad((p-minc)/extent));
     // skin
     const float lambda        = dot(nrm_surface, bisec_nrm);
     const float sin_alpha     = sqrt(1.0 - lambda*lambda);
     const float y             = (d - x*lambda) / sin_alpha - thickness;
-    if (x*x + y*y <= thickness*thickness) {
-    // if (abs(x) < thickness) {
+    //if (x*x + y*y <= thickness*thickness) {
+    if (abs(x) < thickness) {
       return -1.0;
     } else {
       return 1.0;
@@ -107,6 +107,7 @@ float volume(vec3 p)
 
   set_uniform_texture3d(vskin,'object',vx[mdl:hash()])
   set_uniform_vector(vskin,'extent',bx:extent())
+  set_uniform_vector(vskin,'minc',bx:min_corner())
 
   return vskin
   -- return vx[mdl:hash()]
