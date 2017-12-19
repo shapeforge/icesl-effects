@@ -11,7 +11,7 @@ if not vx then vx = {} end
 
 function effect(mdl)
 
-  local t = ui_scalar('Thickness (mm)',1,0.5,3.5)
+  local t = ui_scalar('Thickness (mm)',2,1.5,3.5)
   if not vx[mdl:hash()] then
     vx[mdl:hash()] = to_voxel_distance_field(mdl,0.5)
   end
