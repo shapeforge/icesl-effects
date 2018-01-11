@@ -1,9 +1,11 @@
 name_en = "Support crust"
 name_es = "Corteza"
 name_fr = "Lit de support"
+name_ch = "支撑结构"
 description_en = "Adds a dense support crust below the object to print with soluble filament. The crust is generated in brush 1."
 description_es = "Crea una corteza sobre las superficies soportadas por los puentes de los soportes. La corteza es generada en la brocha 1 y debe ser impresa con filamento soluble "
 description_fr = "Ajoute une couche de support dense sous la pièce pour impression avec du fil soluble. La couche est générée dans la brush 1."
+description_ch = "在模型底部增加支撑结构，可以使用水溶性材料打印。该结构由画刷1生成。"
 
 function effect(mdl)
   local vrts = mesh_vertices(mdl)

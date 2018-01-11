@@ -1,9 +1,11 @@
 name_en = "Grid"
 name_es = "Grilla"
 name_fr = "Grille"
+name_ch = "网格"
 description_en = "Produces a grid lattice inside the model"
 description_es = "Produce una grilla dentro del modelo"
 description_fr = "Génère une grille dans le modèle"
+description_ch = "在模型内部生成栅格装结构"
 
 enable_variable_cache = true
 

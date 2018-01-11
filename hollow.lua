@@ -1,9 +1,11 @@
 name_en = "Hollow"
 name_es = "Ahuecar"
 name_fr = "Evider"
+name_ch = "掏空"
 description_en = "Hollows the model"
 description_es = "Ahueca el modelo"
 description_fr = "Evide la pièce"
+description_ch = "掏空模型内部"
 
 enable_variable_cache = true
 

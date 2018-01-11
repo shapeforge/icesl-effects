@@ -1,9 +1,11 @@
 name_en = "Voroskin"
 name_es = "Voroskin"
 name_fr = "Voroskin"
+name_ch = "Voronoi表面"
 description_en = "Creates a Voronoi diagram along the surface"
 description_es = "Creates a Voronoi diagram along the surface"
 description_fr = "Creates a Voronoi diagram along the surface"
+description_ch = "在模型表面生成Voronoi图"
 
 enable_variable_cache = true
 

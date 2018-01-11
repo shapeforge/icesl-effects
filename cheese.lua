@@ -1,9 +1,11 @@
 name_en = "Cheese"
 name_es = "Poroso"
 name_fr = "Gruyère"
+name_ch = "奶酪"
 description_en = "Turns the object surface into a cheese surface"
 description_es = "Convierte el objeto en una superfice porosa"
 description_fr = "Change la surface en gruyère"
+description_ch = "将模型表面变为奶酪状表面"
 
 enable_variable_cache = true
 

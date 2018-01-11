@@ -1,9 +1,11 @@
 name_en = "Snow"
 name_es = "Nieve"
 name_fr = "Neige"
+name_ch = "积雪"
 description_en = "Adds snow on top of model"
 description_es = "Produce nieve encima del modelo"
 description_fr = "Ajoute de la neige sur le modèle"
+description_ch = "在模型顶部增加积雪效果"
 
 function effect(mdl)
   local trl = 2.0
