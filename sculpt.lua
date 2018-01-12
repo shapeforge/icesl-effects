@@ -4,7 +4,7 @@ name_fr = "Sculpter"
 name_ch = "雕塑"
 description_en = "Sculpt and carve the model with painting"
 description_es = "Esculpir y tallar el modelo"
-description_fr = "Sculpter votre modèle en le peignant"
+description_fr = "Façonner votre modèle en le peignant"
 description_ch = "使用绘制工具来对模型进行雕塑"
 
 function effect(mdl)

@@ -4,7 +4,7 @@ name_fr = "Peindre des pics"
 name_ch = "凸起"
 description_en = "Paint and add spikes to the model"
 description_es = "Agregar clavos en la superficie del modelo"
-description_fr = "Peindre afin d'ajouter des pics sur le modèle"
+description_fr = "Peindre afin d'ajouter des pics au modèle"
 description_ch = "使用绘制工具在模型上增加凸起效果"
 
 
