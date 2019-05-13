@@ -8,10 +8,10 @@ description_fr = "Clone le modèle sur le plateau"
 description_ch = "Clones model over bed plate"
 
 function effect(mdl)
-  local repetitions = math.floor(ui_scalar('N. of clones', 1, 1, 100))
-  local row_n       = math.floor(ui_scalar('Clones per row', 1, 1, 100))
-  local space_x     = math.floor(ui_scalar('Spacing - X', 1, 1, 100))
-  local space_y     = math.floor(ui_scalar('Spacing - Y', 1, 1, 100))
+  local repetitions = ui_number('N. of clones', 1, 1, 100)
+  local row_n       = ui_number('Clones per row', 5, 1, 100)
+  local space_x     = ui_scalar('Spacing - X', 1, 0, 100)
+  local space_y     = ui_scalar('Spacing - Y', 1, 0, 100)
   local bx = bbox(mdl)
   local clones = {}
   local row = 0
