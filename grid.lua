@@ -14,7 +14,7 @@ if not vx then vx = {} end
 function effect(mdl)
   bx = bbox(mdl)
   local scl = ui_scalar('Cell size (mm)',5,1,10)
-  local beams = implicit(bx:min_corner(), bx:max_corner(), [[
+  local beams = implicit_distance_field(bx:min_corner(), bx:max_corner(), [[
 uniform float scl;
 float distanceEstimator(vec3 p) 
 {
@@ -23,7 +23,7 @@ float distanceEstimator(vec3 p)
   return max(min(grid.x,grid.y),max(min(grid.x,grid.z),min(grid.y,grid.z))) - 0.2;
 }
 ]])
-  local lattice = implicit(bx:min_corner(), bx:max_corner(), [[
+  local lattice = implicit_distance_field(bx:min_corner(), bx:max_corner(), [[
 uniform float scl;
 float distanceEstimator(vec3 p) 
 {
@@ -43,6 +43,5 @@ float distanceEstimator(vec3 p)
   set_distance_field_iso(vx[mdl:hash()],-ui_scalar('Skin thickness (mm)',1,0.5,3))
 
   return union(intersection(lattice,difference(mdl,vx[mdl:hash()])),intersection(mdl,beams))
-  -- return intersection(m,beams)
 
 end

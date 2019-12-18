@@ -32,6 +32,6 @@ function effect(mdl)
       end
   end
 
-  return merge{mdl,merge(centroids)}
+  return union{mdl,union(centroids)}
 
 end

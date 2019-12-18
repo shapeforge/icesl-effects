@@ -11,8 +11,6 @@ function effect(mdl)
   local trl = 2.0
   local t = translate(0,0,trl)*difference(mdl,translate(0,0,-trl)*mdl)
   local v = to_voxel_distance_field(t,0.5)
-  set_distance_field_iso(v,-1.0)
-  local v = to_voxel_distance_field(v,0.5)
   set_distance_field_iso(v,2.0)
   v = translate(0,0,-trl/2.0) * v
   emit(v,1)

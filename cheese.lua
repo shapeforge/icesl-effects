@@ -26,5 +26,5 @@ function effect(mdl)
   for i = 1,#tmps,1 do
     centroids[i] = translate(tmps[i][1]) * sphere(ui_scalar('Hole size',0.6,0.5,0.8)*tmps[i][3]) 
   end
-  return difference(h,merge(centroids))
+  return difference(h,union(centroids))
 end

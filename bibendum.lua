@@ -18,7 +18,7 @@ function effect(mdl)
   end
 
   local bx = bbox(mdl)
-  local bib = implicit(bx:min_corner(), bx:max_corner(), [[
+  local bib = implicit_distance_field(bx:min_corner(), bx:max_corner(), [[
 uniform float          scl;
 uniform float          amp;
 uniform sampler3D dfield;

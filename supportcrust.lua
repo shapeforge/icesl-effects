@@ -26,6 +26,6 @@ function effect(mdl)
   end
   set_brush_color(1, 1,1,0)
   local bottom = translate(bx:min_corner())*translate(0,0,-thick*2.0)*ocube(bx:extent().x,bx:extent().y,thick*2.0)
-  emit(difference(merge(all),bottom),1)
+  emit(difference(union(all),bottom),1)
   return mdl
 end
