@@ -8,12 +8,10 @@ description_fr = "Fixe l'object au lit d'impression à l'égard d'un point de sa
 enable_variable_cache = true
 
 function effect(mdl)
-	local mode_selected = ui_radio('Mode:',
-	  {{0, 'Surface point\nselection'},
-	   {1, 'Snap object to\nbed w.r.t. point'}})
+	local snap_model = ui_bool('Snap object to bed w.r.t.\npoint (close surface picker first)', false)
 
-	if mode_selected == 0 then
-	  pmatrix = ui_pick('Choose point')
+	if not snap_model then
+	  pmatrix = ui_pick('Choose surface point')
 	end
 
 	local mag1 = union(Void, magnet('m1'))
@@ -21,10 +19,10 @@ function effect(mdl)
 
 	local smatrix = snap(mag1, 'm1', mag2, 'm2')
 
-	if mode_selected == 0 then
+	if snap_model then
+	  return smatrix * mdl
+	else
 	  emit(mag2)
 	  return mdl
-	else
-	  return smatrix * mdl
 	end
 end
